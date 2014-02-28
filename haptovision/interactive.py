@@ -11,8 +11,21 @@ COLOR_MAX = np.array([0, 0, 0], np.uint8)
 BLOB_COLOR = (0, 255, 0)
 padding = 0
 blobSize = 0
-mouse_feedback = feedback.getSoundFeedbackController()
 bList = list()
+
+
+def getSoundFeedbackController():
+
+    binary_feedback = feedback.BinaryFeedbackController()
+    sound_event = feedback.events.SoundEvent()
+    text_event = feedback.events.TextEvent()
+    binary_feedback.add_event(sound_event)
+    binary_feedback.add_event(text_event)
+    return binary_feedback
+
+
+binary_feedback = getSoundFeedbackController()
+
 
 def printStats():
 	print "Blob Threshold:", blobSize
@@ -32,7 +45,6 @@ def changedRange(nRange):
 	changed(0)(COLOR_MAX[0])
 	changed(1)(COLOR_MAX[1])
 	changed(2)(COLOR_MAX[2])
-	# printStats()
 
 
 def changed(channel):
@@ -48,12 +60,11 @@ def changed(channel):
 		    cv2.fillConvexPoly(img_disp, b.getConvexHull(), BLOB_COLOR)
 
 		cv2.imshow('Display Window', img_disp)
-		# printStats()
 	return changedChannel
 
 
 def on_mouse(event, x, y, flags, param):
-    mouse_feedback.push(bList, x, y)
+    binary_feedback.push(bList, x, y)
 
 
 def main():
