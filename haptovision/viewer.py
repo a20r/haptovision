@@ -10,9 +10,9 @@ class Viewer(object):
         self.img = cv2.imread(filename, cv2.CV_LOAD_IMAGE_COLOR)
         self.fc = fb.DerivativeFeedbackController(20)
         edge_event = fb.events.EdgeEvent(self.img)
-        text_event = fb.events.TextEvent()
+        print_event = fb.events.PrintEvent()
         self.fc += edge_event
-        self.fc += text_event
+        self.fc += print_event
 
 
     def on_mouse(self, event, x, y, flags, param):
