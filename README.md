@@ -1,4 +1,4 @@
 haptovision
 ===========
 
-Haptic response based on changes in image properties
+Haptic response based on touch input and image color derivatives.
