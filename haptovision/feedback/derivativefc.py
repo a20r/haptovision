@@ -37,7 +37,6 @@ class DerivativeFeedbackController(fc.FeedbackController):
             current_color = img[y, x]
             c_dist = self.color_distance(current_color, self.prev_color)
             if c_dist > self.min_color_diff:
-                print c_dist
                 c_diff = self.color_difference(self.prev_color, current_color)
                 self.trigger(x=x, y=y, diff=c_diff)
 

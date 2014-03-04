@@ -13,3 +13,8 @@ class FeedbackController(object):
     def add_event(self, val):
         if hasattr(val, "run"):
             self.event_list.append(val)
+
+
+    def __iadd__(self, val):
+        self.add_event(val)
+        return self
