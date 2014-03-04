@@ -2,6 +2,7 @@
 
 # C extensions
 *.so
+imgs/ye.jpg
 
 # Packages
 *.egg

@@ -5,9 +5,9 @@ class FeedbackController(object):
         self.event_list = list()
 
 
-    def trigger(self, *args, **kwargs):
+    def trigger(self, **kwargs):
         for event in self.event_list:
-            event.run(*args, **kwargs)
+            event.run(**kwargs)
 
 
     def add_event(self, val):
