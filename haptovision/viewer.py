@@ -26,8 +26,3 @@ class Viewer(object):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-
-if __name__ == "__main__":
-    viewer = Viewer(sys.argv[1])
-    viewer.run()
-
