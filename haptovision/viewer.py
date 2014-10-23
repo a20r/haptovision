@@ -1,7 +1,7 @@
 
-import sys
 import cv2
 import feedback as fb
+
 
 class Viewer(object):
 
@@ -11,13 +11,13 @@ class Viewer(object):
         self.fc = fb.DerivativeFeedbackController(20)
         edge_event = fb.events.EdgeEvent(self.img)
         print_event = fb.events.PrintEvent()
+        sound_event = fb.events.SoundEvent()
         self.fc += edge_event
         self.fc += print_event
-
+        self.fc += sound_event
 
     def on_mouse(self, event, x, y, flags, param):
         self.fc.push(self.img, x, y)
-
 
     def run(self):
         cv2.imshow(self.filename, self.img)
@@ -25,4 +25,3 @@ class Viewer(object):
 
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-
